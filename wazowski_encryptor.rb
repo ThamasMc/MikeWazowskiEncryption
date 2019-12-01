@@ -4,7 +4,7 @@
 class WazowskiEncryptor
   def initialize(key, input)
     @key = key.upcase
-    @input = input.downcase
+    @input = input.downcase.gsub(/\s+/, "")
 
     @input_arr = initialize_input_matrix
     @encrypted_string = encrypt_input
