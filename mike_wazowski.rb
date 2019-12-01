@@ -3,13 +3,17 @@
 # encrypted string.
 
 require_relative "wazowski_encryptor"
+require_relative "wazowski_decryptor"
 
 # Get Key and Input from command line
 key = ARGV[0].upcase
-input = File.read(ARGV[1]).gsub(/\s+/, "")
+encrypt_input = File.read(ARGV[1])
 
 puts "Key: #{key}"
-puts "Input: #{input}"
+puts "Encrypt Input: #{encrypt_input}"
 
-encryptor = WazowskiEncryptor.new(key, input)
+encryptor = WazowskiEncryptor.new(key, encrypt_input)
 puts encryptor.encrypted_string
+
+decryptor = WazowskiDecryptor.new(key, encryptor.encrypted_string)
+puts decryptor.decrypted_string
